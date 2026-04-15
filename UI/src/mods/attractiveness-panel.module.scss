@@ -1,0 +1,198 @@
+.panel {
+    position: absolute;
+    bottom: 100rem;
+    right: 10rem;
+    width: 300rem;
+    background-color: rgba(21, 27, 40, 0.97);
+    border-radius: 8rem;
+    color: white;
+    font-family: inherit;
+    z-index: 1000;
+    box-shadow: 0 4rem 20rem rgba(0, 0, 0, 0.6);
+    border: 1rem solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12rem 14rem;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-bottom: 1rem solid rgba(255, 255, 255, 0.06);
+}
+
+.titleArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 13rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.buildingName {
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 2rem;
+}
+
+.closeButton {
+    width: 24rem;
+    height: 24rem;
+    border: none;
+    border-radius: 4rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.body {
+    padding: 14rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10rem;
+}
+
+.label {
+    font-size: 12rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.value {
+    font-size: 16rem;
+    font-weight: 700;
+    color: #4fc3f7;
+    min-width: 40rem;
+    text-align: right;
+}
+
+/* Custom slider */
+.sliderContainer {
+    margin-bottom: 14rem;
+    position: relative;
+    height: 24rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sliderTrack {
+    width: 100%;
+    height: 6rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.sliderFill {
+    height: 100%;
+    background: linear-gradient(90deg, #2196f3, #4fc3f7);
+    border-radius: 3rem;
+    transition: width 0.05s ease;
+}
+
+.sliderThumb {
+    position: absolute;
+    top: 50%;
+    width: 18rem;
+    height: 18rem;
+    background: #4fc3f7;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    pointer-events: none;
+
+    &:hover {
+        transform: translate(-50%, -50%) scale(1.15);
+        box-shadow: 0 2rem 10rem rgba(79, 195, 247, 0.4);
+    }
+}
+
+.sliderThumbActive {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 2rem 12rem rgba(79, 195, 247, 0.5);
+}
+
+.buttonRow {
+    display: flex;
+    gap: 8rem;
+}
+
+.button {
+    flex: 1;
+    padding: 9rem 12rem;
+    border: none;
+    border-radius: 5rem;
+    font-size: 11rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.7);
+    transition: background-color 0.15s;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.13);
+        color: white;
+    }
+}
+
+.applyButton {
+    background-color: rgba(79, 195, 247, 0.25);
+    color: #4fc3f7;
+
+    &:hover {
+        background-color: rgba(79, 195, 247, 0.4);
+        color: white;
+    }
+}
+
+.baseRow {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 10rem;
+}
+
+.overrideTag {
+    font-size: 9rem;
+    font-weight: 700;
+    color: #ff9800;
+    background: rgba(255, 152, 0, 0.15);
+    padding: 2rem 6rem;
+    border-radius: 3rem;
+    letter-spacing: 0.5rem;
+}
+
+.restoreButton {
+    width: 100%;
+    margin-top: 8rem;
+    background-color: rgba(255, 152, 0, 0.15);
+    color: #ff9800;
+
+    &:hover {
+        background-color: rgba(255, 152, 0, 0.3);
+        color: white;
+    }
+}
