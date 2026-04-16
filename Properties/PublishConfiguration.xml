@@ -4,16 +4,16 @@
 	<!--Name of the mod to display to players-->
 	<DisplayName Value="Customize It" />
 	<!--Short description of the mod-->
-	<ShortDescription Value="Tweak building attractiveness values directly in-game." />
+	<ShortDescription Value="Tweak landmark attractiveness values directly in-game." />
 	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 	<LongDescription>### Customize It
 
-Change building attractiveness values right from the game UI.
+Change landmark attractiveness values right from the game UI.
 
-- Select any building with attractiveness and an **editor panel** appears
+- Select any landmark and an **editor panel** appears
 - **Slider** to set attractiveness from 0 to 500
 - One-click **Restore Default** to revert to vanilla values
-- Changes apply to **all buildings of the same type**
+- Changes apply to **all landmarks of the same type**
 - Overrides are **saved automatically** and persist across game restarts
 
 ### Note
@@ -24,18 +24,13 @@ Change building attractiveness values right from the game UI.
 
 - Safe to remove any time. Restore all overrides to default before uninstalling for clean vanilla values.
 - Does not use Harmony or Reflection; more resilient to game updates.
-- Avoid running multiple mods that modify building attractiveness at the same time.
+- Avoid running multiple mods that modify landmark attractiveness at the same time.
 
 ### Languages
 
 - English, French
 
-### Support and Feedback
-
-- If the mod helps you, give it a thumbs up!
-- Report issues on GitHub.
-
-tags: buildings, attractiveness, tourism, customize, tweak
+tags: landmarks, attractiveness, tourism, customize, tweak
 
 	</LongDescription>
 	<!--Thumbnail-->
@@ -61,7 +56,7 @@ tags: buildings, attractiveness, tourism, customize, tweak
 * Persistent overrides across saves.
 	</ChangeLog>
 	<!--External link, can be set multiple times. supported types are "discord", "github", "youtube", "twitch", "x", "paypal", "patreon", "buymeacoffee", "kofi", "crowdin", "gitlab", "gofundme"-->
-	<ExternalLink Type="" Url="" />
+	<ExternalLink Type="github" Url="https://github.com/JoshuaSayagh/CustomizeIt/" />
 	<!--Supported values Public, Private, Unlisted-->
 	<AccessLevel Value="Public" />
 </Publish>
