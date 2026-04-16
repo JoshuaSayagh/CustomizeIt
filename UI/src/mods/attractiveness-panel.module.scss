@@ -1,7 +1,8 @@
 .panel {
     position: absolute;
-    bottom: 100rem;
+    top: 50%;
     right: 10rem;
+    transform: translateY(-50%);
     width: 300rem;
     background-color: rgba(21, 27, 40, 0.97);
     border-radius: 8rem;

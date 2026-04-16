@@ -1,4 +1,4 @@
-﻿using Colossal.IO.AssetDatabase;
+using Colossal.IO.AssetDatabase;
 using Colossal.Logging;
 using CustomizeIt.Systems;
 using Game;
@@ -10,7 +10,7 @@ namespace CustomizeIt
     public class Mod : IMod
     {
         public static ILog log = LogManager.GetLogger($"{nameof(CustomizeIt)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
-        private Setting m_Setting;
+        public static Setting Setting { get; private set; }
 
         public void OnLoad(UpdateSystem updateSystem)
         {
@@ -19,12 +19,11 @@ namespace CustomizeIt
             if (GameManager.instance.modManager.TryGetExecutableAsset(this, out var asset))
                 log.Info($"Current mod asset at {asset.path}");
 
-            m_Setting = new Setting(this);
-            m_Setting.RegisterInOptionsUI();
-            GameManager.instance.localizationManager.AddSource("en-US", new LocaleEN(m_Setting));
+            Setting = new Setting(this);
+            Setting.RegisterInOptionsUI();
+            GameManager.instance.localizationManager.AddSource("en-US", new LocaleEN(Setting));
 
-
-            AssetDatabase.global.LoadSettings(nameof(CustomizeIt), m_Setting, new Setting(this));
+            AssetDatabase.global.LoadSettings(nameof(CustomizeIt), Setting, new Setting(this));
 
             updateSystem.UpdateAt<BuildingAttractivenessUISystem>(SystemUpdatePhase.UIUpdate);
             updateSystem.UpdateAfter<AttractivenessOverrideSystem>(SystemUpdatePhase.PrefabUpdate);
@@ -33,10 +32,10 @@ namespace CustomizeIt
         public void OnDispose()
         {
             log.Info(nameof(OnDispose));
-            if (m_Setting != null)
+            if (Setting != null)
             {
-                m_Setting.UnregisterInOptionsUI();
-                m_Setting = null;
+                Setting.UnregisterInOptionsUI();
+                Setting = null;
             }
         }
     }

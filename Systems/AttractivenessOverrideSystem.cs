@@ -1,14 +1,18 @@
-using System.Collections.Generic;
 using Colossal.Logging;
+using Colossal.Serialization.Entities;
 using Game;
+using Game.Common;
 using Game.Prefabs;
+using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Entities;
 
 namespace CustomizeIt.Systems
 {
     /// <summary>
     /// Manages attractiveness overrides at the prefab layer by modifying
-    /// AttractionData directly on prefab entities.
+    /// AttractionData directly on prefab entities. Persists overrides via
+    /// the game's ModSetting framework.
     /// </summary>
     public partial class AttractivenessOverrideSystem : GameSystemBase
     {
@@ -30,6 +34,19 @@ namespace CustomizeIt.Systems
         }
 
         /// <summary>
+        /// Re-applies saved overrides after a game loads.
+        /// </summary>
+        protected override void OnGameLoadingComplete(Purpose purpose, GameMode mode)
+        {
+            base.OnGameLoadingComplete(purpose, mode);
+
+            if (mode != GameMode.Game)
+                return;
+
+            LoadAndApplyOverrides();
+        }
+
+        /// <summary>
         /// Applies an attractiveness override to the given prefab entity.
         /// </summary>
         public void SetOverride(Entity prefabEntity, int attractiveness)
@@ -42,7 +59,11 @@ namespace CustomizeIt.Systems
                 m_Attractiveness = attractiveness
             });
 
+            if (!EntityManager.HasComponent<Updated>(prefabEntity))
+                EntityManager.AddComponent<Updated>(prefabEntity);
+
             m_Overrides[prefabEntity] = attractiveness;
+            SaveOverrides();
             log.Info($"Override set on prefab {prefabEntity.Index}: attractiveness = {attractiveness}");
         }
 
@@ -61,9 +82,13 @@ namespace CustomizeIt.Systems
                 {
                     m_Attractiveness = attraction.m_Attractiveness
                 });
+
+                if (!EntityManager.HasComponent<Updated>(prefabEntity))
+                    EntityManager.AddComponent<Updated>(prefabEntity);
             }
 
             m_Overrides.Remove(prefabEntity);
+            SaveOverrides();
             log.Info($"Override removed from prefab {prefabEntity.Index}, restored to vanilla.");
             return true;
         }
@@ -94,6 +119,73 @@ namespace CustomizeIt.Systems
             }
 
             return 0;
+        }
+
+        /// <summary>
+        /// Persists current overrides to the mod's settings file via AssetDatabase.
+        /// </summary>
+        private void SaveOverrides()
+        {
+            Setting setting = Mod.Setting;
+            if (setting == null)
+                return;
+
+            var names = new List<string>();
+            var values = new List<int>();
+
+            foreach (var kvp in m_Overrides)
+            {
+                if (m_PrefabSystem.TryGetPrefab(kvp.Key, out PrefabBase prefab))
+                {
+                    names.Add(prefab.name);
+                    values.Add(kvp.Value);
+                }
+            }
+
+            setting.OverridePrefabNames = names.ToArray();
+            setting.OverrideValues = values.ToArray();
+            setting.ApplyAndSave();
+            log.Info($"Saved {names.Count} attractiveness override(s).");
+        }
+
+        /// <summary>
+        /// Reads overrides from the mod's settings and applies them to prefab entities.
+        /// </summary>
+        private void LoadAndApplyOverrides()
+        {
+            Setting setting = Mod.Setting;
+            if (setting == null)
+                return;
+
+            string[] names = setting.OverridePrefabNames;
+            int[] values = setting.OverrideValues;
+
+            if (names == null || values == null || names.Length == 0 || names.Length != values.Length)
+                return;
+
+            var savedOverrides = new Dictionary<string, int>();
+            for (int i = 0; i < names.Length; i++)
+                savedOverrides[names[i]] = values[i];
+
+            EntityQuery prefabQuery = GetEntityQuery(ComponentType.ReadOnly<AttractionData>());
+            using NativeArray<Entity> entities = prefabQuery.ToEntityArray(Allocator.Temp);
+
+            int applied = 0;
+            for (int i = 0; i < entities.Length; i++)
+            {
+                if (m_PrefabSystem.TryGetPrefab(entities[i], out PrefabBase prefab)
+                    && savedOverrides.TryGetValue(prefab.name, out int attractiveness))
+                {
+                    EntityManager.SetComponentData(entities[i], new AttractionData
+                    {
+                        m_Attractiveness = attractiveness
+                    });
+                    m_Overrides[entities[i]] = attractiveness;
+                    applied++;
+                }
+            }
+
+            log.Info($"Loaded and applied {applied} attractiveness override(s) from settings.");
         }
     }
 }
