@@ -18,6 +18,9 @@ Un mod pour **Cities: Skylines II** qui permet de modifier les valeurs d'attract
 - Deplacez le curseur ou entrez une valeur, puis cliquez sur **Appliquer**
 - La modification est sauvegardee automatiquement et rechargee a la prochaine partie
 
+## Note
+- Les changements prennent environ **5 a 20 secondes** avant d'apparaitre dans le menu tourisme en jeu. La modification est appliquee immediatement au niveau du prefab, mais les statistiques de tourisme du jeu prennent un moment a se recalculer.
+
 ## Compatibilite
 - Peut etre retire a tout moment. Restaurez toutes les modifications par defaut avant de desinstaller pour retrouver les valeurs d'origine.
 - Pas de Harmony / pas de Reflection.

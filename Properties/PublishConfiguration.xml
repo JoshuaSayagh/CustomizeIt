@@ -1,35 +1,65 @@
-﻿<Publish>
+<Publish>
 	<!--Id must be set in order to update existed mod. it is not required for publishing mod for the first time-->
 	<ModId Value="" />
 	<!--Name of the mod to display to players-->
-	<DisplayName Value="CustomizeIt" />
+	<DisplayName Value="Customize It" />
 	<!--Short description of the mod-->
-	<ShortDescription Value="This is a short description" />
+	<ShortDescription Value="Tweak building attractiveness values directly in-game." />
 	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
-	<!--LongDescription Value="This is a long description" /-->
-	<LongDescription>
-This is a long description
+	<LongDescription>### Customize It
+
+Change building attractiveness values right from the game UI.
+
+- Select any building with attractiveness and an **editor panel** appears
+- **Slider** to set attractiveness from 0 to 500
+- One-click **Restore Default** to revert to vanilla values
+- Changes apply to **all buildings of the same type**
+- Overrides are **saved automatically** and persist across game restarts
+
+### Note
+
+- Changes take about **5 to 20 seconds** to show up in the tourism menu in-game. The override is applied immediately at the prefab level, but the game's tourism stats take a moment to recalculate.
+
+### Compatibility
+
+- Safe to remove any time. Restore all overrides to default before uninstalling for clean vanilla values.
+- Does not use Harmony or Reflection; more resilient to game updates.
+- Avoid running multiple mods that modify building attractiveness at the same time.
+
+### Languages
+
+- English, French
+
+### Support and Feedback
+
+- If the mod helps you, give it a thumbs up!
+- Report issues on GitHub.
+
+tags: buildings, attractiveness, tourism, customize, tweak
+
 	</LongDescription>
 	<!--Thumbnail-->
 	<Thumbnail Value="Properties/Thumbnail.png" />
 	<!--Screenshot, can be set multiple times-->
-	<Screenshot Value="" />
+	<Screenshot Value="Properties/menu-screenshot.png" />
+	<Screenshot Value="Properties/high-attractivness-setting.png" />
+	<Screenshot Value="Properties/low-attractivness-setting.png" />
 	<!--Tag, can be set multiple times-->
-	<Tag Value="" />
+	<Tag Value="Code Mod" />
 	<!--Link to the forum post where the mod can be discussed-->
 	<ForumLink Value="" />
 	<!--Version of the mod-->
 	<ModVersion Value="1.0" />
 	<!--Recommended version of the base game to use the mod-->
-	<GameVersion Value="1.0.*" />
+	<GameVersion Value="1.5.*" />
 	<!--Dependency for the mod, can be set multiple times-->
 	<Dependency Id="" />
-	<!--Required DLC, can be set multiple times. Supported values are "Landmark Buildings", "San Fransisco Set", "Beach Properties", "Urban Promenades", "Modern Architecture"-->
-	<RequiredDLC Value="" />
 	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
-	<ChangeLog Value="" />
-	<!--<ChangeLog>
-	</ChangeLog>-->
+	<ChangeLog>
+* Initial release.
+* Attractiveness editor panel with slider.
+* Persistent overrides across saves.
+	</ChangeLog>
 	<!--External link, can be set multiple times. supported types are "discord", "github", "youtube", "twitch", "x", "paypal", "patreon", "buymeacoffee", "kofi", "crowdin", "gitlab", "gofundme"-->
 	<ExternalLink Type="" Url="" />
 	<!--Supported values Public, Private, Unlisted-->

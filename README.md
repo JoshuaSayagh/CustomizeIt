@@ -18,6 +18,9 @@ A **Cities: Skylines II** mod that lets you tweak building attractiveness values
 - Drag the slider or type a value, then hit **Apply**
 - The override is saved automatically and reloaded next time you play
 
+## Note
+- Changes take about **5 to 20 seconds** to show up in the tourism menu in-game. The override is applied immediately at the prefab level, but the game's tourism stats take a moment to recalculate.
+
 ## Compatibility notes
 - Safe to remove anytime. Restore all overrides to default before uninstalling for clean vanilla values.
 - No Harmony / no Reflection.
