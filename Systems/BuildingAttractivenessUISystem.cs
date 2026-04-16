@@ -103,10 +103,7 @@ namespace CustomizeIt.Systems
                 }
             }
 
-            if (selectedEntity != Entity.Null)
-            {
-                ClosePanel();
-            }
+            ClosePanel();
         }
 
         private void RefreshPanelData(Entity prefabEntity)

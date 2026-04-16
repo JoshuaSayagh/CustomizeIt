@@ -4,33 +4,30 @@
 	<!--Name of the mod to display to players-->
 	<DisplayName Value="Customize It" />
 	<!--Short description of the mod-->
-	<ShortDescription Value="Tweak landmark attractiveness values directly in-game." />
+	<ShortDescription Value="Modify attractiveness values for landmarks, parks, ect." />
 	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 	<LongDescription>### [ALPHA] Customize It
+**IMPORTANT:** Changes take effect immediately, but it can take **5 to 30 seconds** for the updated values to show up in the tourism menu.
+Customize the attractiveness of any building that has an attractiveness score — landmarks, parks, tourist attractions, ect..
 
-Change landmark attractiveness values right from the game UI.
-
-**IMPORTANT:** Changes take effect immediately, but it can take **5 to 20 seconds** for the updated values to show up in the tourism menu.
-
-- Select any landmark and an **editor panel** appears
+- Select any building with attractiveness and an **editor panel** appears
 - **Slider** to set attractiveness from 0 to 500
 - One-click **Restore Default** to revert to vanilla values
-- Changes apply to **all landmarks of the same type**
+- Changes apply to **all buildings of the same type**
 - Overrides are **saved automatically** and persist across game restarts
-- To close the panel, click on any other building
+- To close the panel, click anywhere else
+
+###Notes
+- To see Increase In tourism, it may take a full day cycle for new tourists to arrive to the city
 
 ### Compatibility
 
 - Safe to remove any time. Restore all overrides to default before uninstalling for clean vanilla values.
-- Does not use Harmony or Reflection; more resilient to game updates.
-- Avoid running multiple mods that modify landmark attractiveness at the same time.
+- Does not use Harmony
 
 ### Languages
 
 - English, French
-
-tags: landmarks, attractiveness, tourism, customize, tweak
-
 	</LongDescription>
 	<!--Thumbnail-->
 	<Thumbnail Value="Properties/Thumbnail.png" />
@@ -38,12 +35,18 @@ tags: landmarks, attractiveness, tourism, customize, tweak
 	<Screenshot Value="Properties/menu-screenshot.png" />
 	<Screenshot Value="Properties/high-attractivness-setting.png" />
 	<Screenshot Value="Properties/low-attractivness-setting.png" />
+	<Screenshot Value="Properties/menu-showcase.png" />
+	
 	<!--Tag, can be set multiple times-->
 	<Tag Value="Code Mod" />
+	<Tag Value="UIParks &amp; Recreation" />
+	<Tag Value="UITouristAttractions" />
+	<Tag Value="UISignaturesLandmarks" />
+	<Tag Value="SignatureBuilding" />
 	<!--Link to the forum post where the mod can be discussed-->
-	<ForumLink Value="" />
+	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/customizeit.1917189/" />
 	<!--Version of the mod-->
-	<ModVersion Value="1.0" />
+	<ModVersion Value="1.1" />
 	<!--Recommended version of the base game to use the mod-->
 	<GameVersion Value="1.5.*" />
 	<!--Dependency for the mod, can be set multiple times-->

@@ -6,7 +6,7 @@
 		<!--The file where mod information which is required for publishing mod on PDX mods are stored-->
 		<PublishConfigurationPath>Properties\PublishConfiguration.xml</PublishConfigurationPath>
 		<Title>Customize It</Title>
-		<Version>0.1.0</Version>
+		<Version>0.1.1</Version>
 		<Description>Customize Buildings propreties!</Description>
 
 		<!--Exclude UI node_modules from the C# project-->
