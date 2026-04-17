@@ -67,11 +67,7 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
-	</ItemGroup>
-
-	<ItemGroup>
+<ItemGroup>
 		<Reference Update="System">
 			<Private>false</Private>
 		</Reference>

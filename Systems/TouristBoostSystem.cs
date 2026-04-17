@@ -84,15 +84,26 @@ namespace CustomizeIt.Systems
 
             int diff = target - currentTourists;
 
-            // Spawn in batches proportional to the gap — faster catch-up when far from target
+            int absDiff = math.abs(diff);
+
             if (diff > 0)
             {
-                int batch = diff > 1000 ? 20 : (diff > 200 ? 10 : 3);
+                int batch;
+                if (absDiff > 1000)      batch = 20;
+                else if (absDiff > 200)   batch = 10;
+                else if (absDiff > 50)    batch = 3;
+                else                      batch = 1;
+
                 SpawnTourists(math.min(diff, batch));
             }
-            else if (diff < -100)
+            else if (diff < -50)
             {
-                DespawnTourists(math.min(-diff, 10));
+                int batch;
+                if (absDiff > 1000)       batch = 10;
+                else if (absDiff > 200)   batch = 5;
+                else                      batch = 1;
+
+                DespawnTourists(math.min(absDiff, batch));
             }
         }
 

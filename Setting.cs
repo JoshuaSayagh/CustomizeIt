@@ -32,7 +32,7 @@ namespace CustomizeIt
         public string[] OverridePrefabNames { get; set; } = new string[0];
         public int[] OverrideValues { get; set; } = new int[0];
 
-        // ---- Tourism: target tourist count (Harmony patch reads this) ----
+        // ---- Tourism: target tourist count ----
 
         [SettingsUISlider(min = 0, max = 20000, step = 100, scalarMultiplier = 1, unit = Unit.kInteger)]
         [SettingsUISection(TourismTab, TourismGroup)]
