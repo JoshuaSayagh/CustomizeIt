@@ -47,6 +47,8 @@ Customize the attractiveness of any building — landmarks, parks, tourist attra
 	<!--Screenshot, can be set multiple times-->
 	<Screenshot Value="Properties/high-tourism.png" />
 	<Screenshot Value="Properties/setting-target.png" />
+	<Screenshot Value="Properties/graph.png" />
+	<Screenshot Value="Properties/road-full-of-tourists.png" />
 	<Screenshot Value="Properties/menu-screenshot.png" />
 	<Screenshot Value="Properties/high-attractivness-setting.png" />
 	<Screenshot Value="Properties/menu-showcase.png" />
