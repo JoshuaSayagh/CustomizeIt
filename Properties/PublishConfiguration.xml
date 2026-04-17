@@ -2,15 +2,23 @@
 	<!--Id must be set in order to update existed mod. it is not required for publishing mod for the first time-->
 	<ModId Value="141243" />
 	<!--Name of the mod to display to players-->
-	<DisplayName Value="Customize It" />
+	<DisplayName Value="Custom Tourism" />
 	<!--Short description of the mod-->
-	<ShortDescription Value="Modify attractiveness values for landmarks, parks, ect." />
+	<ShortDescription Value="Control the number of tourists in your city and customize building attractiveness." />
 	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
-	<LongDescription>### [ALPHA] Customize It
-**IMPORTANT:** Changes take effect immediately, but it can take **5 to 30 seconds** for the updated values to show up in the tourism menu.
+	<LongDescription>### [ALPHA] Custom Tourism
+Want more tourists in your city? Or fewer? Set a **target tourist count** and the mod handles the rest.
+
+### Tourism Control
+Set exactly how many tourists you want in your city from the settings panel (Options → Custom Tourism → Tourism).
+
+- Slider from 0 to 20,000 tourists
+- **0 = disabled** (vanilla behavior)
+- The mod gradually spawns or removes tourists to reach your target
+- Make sure you have enough hotels to accommodate your tourists
 
 ### Attractiveness Editor
-Customize the attractiveness of any building that has an attractiveness score — landmarks, parks, tourist attractions, etc.
+Customize the attractiveness of any building — landmarks, parks, tourist attractions, etc.
 
 - Select any building with attractiveness and an **editor panel** appears
 - **Slider** to set attractiveness from 0 to 500
@@ -19,16 +27,9 @@ Customize the attractiveness of any building that has an attractiveness score �
 - Overrides are **saved automatically** and persist across game restarts
 - To close the panel, click anywhere else
 
-### Tourism Control
-Set a **target tourist count** for your city from the settings panel (Options → Customize It → Tourism).
-
-- Slider from 0 to 20,000 tourists
-- **0 = disabled** (vanilla behavior)
-- The mod spawns and manages tourists to reach your target
-- Make sure you have enough hotels to accommodate your tourists
-
 ### Notes
 - To see an increase in tourism, it may take a full day cycle for new tourists to arrive
+- Attractiveness changes take about **5 to 30 seconds** to show up in the tourism menu
 
 ### Compatibility
 
@@ -56,16 +57,16 @@ Set a **target tourist count** for your city from the settings panel (Options �
 	<!--Link to the forum post where the mod can be discussed-->
 	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/customizeit.1917189/" />
 	<!--Version of the mod-->
-	<ModVersion Value="1.1" />
+	<ModVersion Value="1.2" />
 	<!--Recommended version of the base game to use the mod-->
 	<GameVersion Value="1.5.*" />
 	<!--Dependency for the mod, can be set multiple times-->
 	<Dependency Id="" />
 	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
 	<ChangeLog>
-* Initial release.
-* Attractiveness editor panel with slider.
-* Persistent overrides across saves.
+- Mod renamed to **Custom Tourism**
+- Added **Tourism Control**: set a target tourist count for your city (0-20,000)
+- Attractiveness editor panel now closes when clicking anywhere outside
 	</ChangeLog>
 	<!--External link, can be set multiple times. supported types are "discord", "github", "youtube", "twitch", "x", "paypal", "patreon", "buymeacoffee", "kofi", "crowdin", "gitlab", "gofundme"-->
 	<ExternalLink Type="github" Url="https://github.com/JoshuaSayagh/CustomizeIt/" />
