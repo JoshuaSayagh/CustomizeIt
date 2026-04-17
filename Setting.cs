@@ -78,7 +78,7 @@ namespace CustomizeIt
         {
             return new Dictionary<string, string>
             {
-                { m_Setting.GetSettingsLocaleID(), "Customize It" },
+                { m_Setting.GetSettingsLocaleID(), "Custom Tourism" },
 
                 // Tabs
                 { m_Setting.GetOptionTabLocaleID(Setting.TourismTab), "Tourism" },
@@ -123,7 +123,7 @@ namespace CustomizeIt
         {
             return new Dictionary<string, string>
             {
-                { m_Setting.GetSettingsLocaleID(), "Customize It" },
+                { m_Setting.GetSettingsLocaleID(), "Custom Tourism" },
 
                 // Tabs
                 { m_Setting.GetOptionTabLocaleID(Setting.TourismTab), "Tourisme" },
