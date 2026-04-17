@@ -93,8 +93,7 @@ namespace CustomizeIt
                     m_Setting.GetOptionDescLocaleID(nameof(Setting.TargetTouristCount)),
                     "Set the target number of tourists for your city.\n" +
                     "**0 = disabled** (uses the game's vanilla formula).\n" +
-                    "Higher values allow more tourists to spawn. The vanilla cap is around 2100.\n" +
-                    "Make sure you have enough hotels to accommodate your tourists."
+                    "Higher values allow more tourists to spawn. The vanilla cap is around 2100."
                 },
 
                 // Reset button
@@ -139,8 +138,7 @@ namespace CustomizeIt
                     m_Setting.GetOptionDescLocaleID(nameof(Setting.TargetTouristCount)),
                     "Definit le nombre cible de touristes pour votre ville.\n" +
                     "**0 = desactive** (utilise la formule vanilla du jeu).\n" +
-                    "Des valeurs plus elevees permettent l'arrivee de plus de touristes. Le plafond vanilla est d'environ 2100.\n" +
-                    "Assurez-vous d'avoir assez d'hotels pour accueillir vos touristes."
+                    "Des valeurs plus elevees permettent l'arrivee de plus de touristes. Le plafond vanilla est d'environ 2100."
                 },
 
                 // Reset button
