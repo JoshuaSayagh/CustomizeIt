@@ -9,6 +9,8 @@ namespace CustomizeIt
 {
     public class Mod : IMod
     {
+        public const string ModId = nameof(CustomizeIt);
+
         public static ILog log = LogManager.GetLogger($"{nameof(CustomizeIt)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
         public static Setting Setting { get; private set; }
 
@@ -24,7 +26,7 @@ namespace CustomizeIt
             GameManager.instance.localizationManager.AddSource("en-US", new LocaleEN(Setting));
             GameManager.instance.localizationManager.AddSource("fr-FR", new LocaleFR(Setting));
 
-            AssetDatabase.global.LoadSettings(nameof(CustomizeIt), Setting, new Setting(this));
+            AssetDatabase.global.LoadSettings(ModId, Setting, new Setting(this));
 
             updateSystem.UpdateAt<BuildingAttractivenessUISystem>(SystemUpdatePhase.UIUpdate);
             updateSystem.UpdateAfter<AttractivenessOverrideSystem>(SystemUpdatePhase.PrefabUpdate);

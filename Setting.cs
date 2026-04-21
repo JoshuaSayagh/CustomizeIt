@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace CustomizeIt
 {
-    [FileLocation(nameof(CustomizeIt))]
+    [FileLocation("ModsSettings/CustomTourism/CustomTourism")]
     [SettingsUIGroupOrder(TourismGroup, ResetGroup)]
     [SettingsUIShowGroupName(TourismGroup, ResetGroup)]
     public class Setting : ModSetting

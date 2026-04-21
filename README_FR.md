@@ -44,7 +44,7 @@ Un mod pour **Cities: Skylines II** qui permet de controler le nombre de tourist
 - N'utilise pas Harmony
 
 ## Fichier de configuration
-`ModsSettings/CustomizeIt/CustomizeIt.coc`
+`ModsSettings/CustomTourism/CustomTourism.coc`
 
 ## Fonctionnalites en detail
 
@@ -55,6 +55,10 @@ Un mod pour **Cities: Skylines II** qui permet de controler le nombre de tourist
 | Restaurer par defaut | Remet le batiment a sa valeur d'attractivite d'origine. |
 | Sauvegarde persistante | Vos modifications sont sauvegardees et automatiquement appliquees au chargement. |
 | Modification par prefab | Modifier un batiment affecte tous les batiments places du meme type. |
+
+## Credits
+
+Merci a **Honu / River-Mochi** de la communaute Discord de modding Cities: Skylines pour son aide!
 
 ## Licence
 
