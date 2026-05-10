@@ -98,9 +98,9 @@ namespace CustomizeIt.Systems
             if (diff > deadband)
             {
                 int batch;
-                if (absDiff > 1000)      batch = 90;
-                else if (absDiff > 200)   batch = 40;
-                else if (absDiff > 50)    batch = 10;
+                if (absDiff > 2000)      batch = 90;
+                else if (absDiff > 1000)   batch = 40;
+                else if (absDiff > 200)    batch = 10;
                 else                      batch = 3;
 
                 int count = math.min(diff, batch);
