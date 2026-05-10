@@ -13,7 +13,7 @@ namespace CustomizeIt
     public class Setting : ModSetting
     {
         private const int MinTarget = 0;
-        private const int MaxTarget = 20000;
+        private const int MaxTarget = 60000;
         private const int DefaultTarget = 0;
 
         // Tabs
@@ -34,7 +34,7 @@ namespace CustomizeIt
 
         // ---- Tourism: target tourist count ----
 
-        [SettingsUISlider(min = 0, max = 20000, step = 100, scalarMultiplier = 1, unit = Unit.kInteger)]
+        [SettingsUISlider(min = 0, max = 60000, step = 500, scalarMultiplier = 1, unit = Unit.kInteger)]
         [SettingsUISection(TourismTab, TourismGroup)]
         public int TargetTouristCount { get; set; }
 
@@ -93,14 +93,16 @@ namespace CustomizeIt
                     m_Setting.GetOptionDescLocaleID(nameof(Setting.TargetTouristCount)),
                     "Set the target number of tourists for your city.\n" +
                     "**0 = disabled** (uses the game's vanilla formula).\n" +
-                    "Higher values allow more tourists to spawn. The vanilla cap is around 2100."
+                    "Higher values allow more tourists to spawn. The vanilla cap is around 2100. Range: 0-60,000.\n\n" +
+                    "**Note:** Targets above 20,000 may impact game performance depending on your computer.\n" +
+                    "Tourists also need good access to your city - make sure you have road, train, air, or ship outside connections, otherwise tourists won't be able to reach your city."
                 },
 
                 // Reset button
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetTourism)), "Reset to Default" },
                 {
                     m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetTourism)),
-                    "Set the target tourist count back to 0 (disabled)."
+                    "Set the target tourist count back to 0 (disabled). Re-enables the game's vanilla tourist spawning."
                 },
             };
         }
@@ -138,14 +140,16 @@ namespace CustomizeIt
                     m_Setting.GetOptionDescLocaleID(nameof(Setting.TargetTouristCount)),
                     "Definit le nombre cible de touristes pour votre ville.\n" +
                     "**0 = desactive** (utilise la formule vanilla du jeu).\n" +
-                    "Des valeurs plus elevees permettent l'arrivee de plus de touristes. Le plafond vanilla est d'environ 2100."
+                    "Des valeurs plus elevees permettent l'arrivee de plus de touristes. Le plafond vanilla est d'environ 2100. Plage : 0-60000.\n\n" +
+                    "**Note :** Au-dela de 20000, les performances peuvent etre affectees selon votre ordinateur.\n" +
+                    "Les touristes ont aussi besoin d'un bon acces a votre ville - assurez-vous d'avoir des connexions exterieures par route, train, air ou bateau, sinon les touristes ne pourront pas atteindre votre ville."
                 },
 
                 // Reset button
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetTourism)), "Reinitialiser" },
                 {
                     m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetTourism)),
-                    "Remet le nombre cible de touristes a 0 (desactive)."
+                    "Remet le nombre cible de touristes a 0 (desactive). Reactive le systeme de tourisme vanilla du jeu."
                 },
             };
         }

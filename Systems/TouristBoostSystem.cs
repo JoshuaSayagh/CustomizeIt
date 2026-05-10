@@ -13,10 +13,6 @@ using Unity.Mathematics;
 
 namespace CustomizeIt.Systems
 {
-    /// <summary>
-    /// Spawns or despawns tourist households to reach the user's target count.
-    /// Bypasses the game's Burst-compiled spawn formula by creating entities directly.
-    /// </summary>
     public partial class TouristBoostSystem : GameSystemBase
     {
         private static readonly ILog log = Mod.log;
@@ -25,6 +21,8 @@ namespace CustomizeIt.Systems
         private CityStatisticsSystem m_CityStatisticsSystem;
         private SimulationSystem m_SimulationSystem;
         private EndFrameBarrier m_EndFrameBarrier;
+        private TouristSpawnSystem m_VanillaSpawnSystem;
+        private int m_LastDelta;
 
         private EntityQuery m_HouseholdPrefabQuery;
         private EntityQuery m_OutsideConnectionQuery;
@@ -37,6 +35,7 @@ namespace CustomizeIt.Systems
             m_CityStatisticsSystem = World.GetOrCreateSystemManaged<CityStatisticsSystem>();
             m_SimulationSystem = World.GetOrCreateSystemManaged<SimulationSystem>();
             m_EndFrameBarrier = World.GetOrCreateSystemManaged<EndFrameBarrier>();
+            m_VanillaSpawnSystem = World.GetExistingSystemManaged<TouristSpawnSystem>();
 
             // Same queries the game's TouristSpawnSystem uses
             m_HouseholdPrefabQuery = GetEntityQuery(
@@ -50,7 +49,6 @@ namespace CustomizeIt.Systems
                 ComponentType.Exclude<Temp>(),
                 ComponentType.Exclude<Deleted>());
 
-            // Query for existing tourist households (for despawning)
             m_TouristHouseholdQuery = GetEntityQuery(
                 ComponentType.ReadOnly<TouristHousehold>(),
                 ComponentType.ReadOnly<Household>(),
@@ -76,35 +74,52 @@ namespace CustomizeIt.Systems
                 return;
 
             int target = setting.TargetTouristCount;
-            if (target <= 0)
-                return;
 
-            int currentTourists = m_CityStatisticsSystem.GetStatisticValue(
+            if (m_VanillaSpawnSystem != null)
+                m_VanillaSpawnSystem.Enabled = target <= 0;
+
+            if (target <= 0)
+            {
+                m_LastDelta = 0;
+                return;
+            }
+
+            int statCurrent = m_CityStatisticsSystem.GetStatisticValue(
                 Game.City.StatisticType.TouristCount);
 
-            int diff = target - currentTourists;
-
+            int predictedCurrent = statCurrent + m_LastDelta;
+            int diff = target - predictedCurrent;
             int absDiff = math.abs(diff);
 
-            if (diff > 0)
+            int deadband = math.max(50, target / 50);
+
+            int thisDelta = 0;
+
+            if (diff > deadband)
             {
                 int batch;
-                if (absDiff > 1000)      batch = 20;
-                else if (absDiff > 200)   batch = 10;
-                else if (absDiff > 50)    batch = 3;
-                else                      batch = 1;
+                if (absDiff > 1000)      batch = 90;
+                else if (absDiff > 200)   batch = 40;
+                else if (absDiff > 50)    batch = 10;
+                else                      batch = 3;
 
-                SpawnTourists(math.min(diff, batch));
+                int count = math.min(diff, batch);
+                SpawnTourists(count);
+                thisDelta = count;
             }
-            else if (diff < -50)
+            else if (diff < -deadband)
             {
                 int batch;
-                if (absDiff > 1000)       batch = 10;
-                else if (absDiff > 200)   batch = 5;
-                else                      batch = 1;
+                if (absDiff > 1000)       batch = 50;
+                else if (absDiff > 200)   batch = 20;
+                else                      batch = 5;
 
-                DespawnTourists(math.min(absDiff, batch));
+                int count = math.min(absDiff, batch);
+                DespawnTourists(count);
+                thisDelta = -count;
             }
+
+            m_LastDelta = thisDelta;
         }
 
         private void SpawnTourists(int count)
@@ -134,7 +149,6 @@ namespace CustomizeIt.Systems
                     m_LeavingTime = 0u
                 });
 
-                // Assign to a random outside connection
                 Entity oc = outsideConnections[random.NextInt(outsideConnections.Length)];
                 commandBuffer.AddComponent(household, new CurrentBuilding
                 {
@@ -164,6 +178,13 @@ namespace CustomizeIt.Systems
             }
 
             m_EndFrameBarrier.AddJobHandleForProducer(Dependency);
+        }
+
+        protected override void OnDestroy()
+        {
+            if (m_VanillaSpawnSystem != null)
+                m_VanillaSpawnSystem.Enabled = true;
+            base.OnDestroy();
         }
     }
 }
