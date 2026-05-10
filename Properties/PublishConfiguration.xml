@@ -12,7 +12,7 @@ Want more tourists in your city? Or fewer? Set a **target tourist count** and th
 ### Tourism Control
 Set exactly how many tourists you want in your city from the settings panel (Options → Custom Tourism → Tourism).
 
-- Slider from 0 to 20,000 tourists
+- Slider from 0 to 60,000 tourists
 - **0 = disabled** (vanilla behavior)
 - The mod gradually spawns or removes tourists to reach your target
 - Works independently from the game's built-in tourism formula
@@ -66,14 +66,16 @@ Thanks to **Honu / River-Mochi** from the Cities: Skylines modding Discord for t
 	<!--Link to the forum post where the mod can be discussed-->
 	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/customizeit.1917189/" />
 	<!--Version of the mod-->
-	<ModVersion Value="1.2.1" />
+	<ModVersion Value="1.2.3" />
 	<!--Recommended version of the base game to use the mod-->
 	<GameVersion Value="1.5.*" />
 	<!--Dependency for the mod, can be set multiple times-->
 	<Dependency Id="" />
 	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
 	<ChangeLog>
-- Minor Changes, Moved Settings File
+- Tourist target raised to 60k
+- Vanilla tourist spawning pauses when a target is set
+- Smoother behavior around the target on bigger cities
 	</ChangeLog>
 	<!--External link, can be set multiple times. supported types are "discord", "github", "youtube", "twitch", "x", "paypal", "patreon", "buymeacoffee", "kofi", "crowdin", "gitlab", "gofundme"-->
 	<ExternalLink Type="github" Url="https://github.com/JoshuaSayagh/CustomizeIt/" />
